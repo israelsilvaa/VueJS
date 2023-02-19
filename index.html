@@ -4,28 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="./vue.js"></script>
+    <title>Document</title>
 </head>
-<body>  
-    <h2>teste de live server</h2>
-
+<body>
     <div id="app">
-        {{mensagem}}
+        {{ mensagem }}<br>
+        Valor total: {{ valorTotal }}<br>
+        Logado: {{ logado }}<br>
+        Hobbie: {{ hobbies[3] }}<br>
+        Perfil: {{ perfil.site }}, {{ perfil.cursos[0].nome }}
     </div>
-    
+
     <script>
-        options = {
-            el:'#app', // #para selecionar por ID e . p selecionar por class
-            data:{  // guarda variaveis ou atributos reativos
-                mensagem: 'primeiro template controlado por Vue' 
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Primeiro template controlado pelo Vue', //string
+                valorTotal: 150.47, //número
+                logado: false, //booleano
+                hobbies: [
+                    'Dormir',
+                    'Colecionar vídeo games antigos',
+                    'Correr',
+                    'Trilhas'
+                ],
+                perfil: {
+                    nome: 'Jorge Sant Ana',
+                    site: 'jorgesantana.net.br',
+                    idade: 32,
+                    cursos: [
+                        { 
+                            nome: 'Laravel', 
+                            cargaHoraria: '50 horas' 
+                        },
+                        { 
+                            nome: 'Bancos de Dados Relacionais', 
+                            cargaHoraria: '40 horas'
+                        }
+                    ]
+                }
             }
-        }
+        })
 
-        const vm = new Vue(options) // vm = viewModel
-
-        console.log(vm)
     </script>
-
 </body>
 </html>
