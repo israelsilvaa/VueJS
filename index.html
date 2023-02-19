@@ -13,7 +13,6 @@
         {{ subtrair() }}<br>
         {{ multiplicar() }}<br>
         {{ dividir() }}<br>
-        {{ numeroAleatorio() }}<br>
     </div>
 
     <script>
@@ -21,8 +20,8 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                n1: 4,
-                n2: 2
+                n1: 10,
+                n2: 5
             },
             methods: {
                 somar: function somar() { //convencional
@@ -32,14 +31,11 @@
                     return this.n1 - this.n2;
                 },
                 multiplicar: () => { //arrow function
-                    return 4 * 2;
+                    return this.n1 * this.n2; //contexto léxico
                 },
                 dividir() { //forma enxuta de definir os pares de chave/valor
                     return this.n1 / this.n2;
-                },
-                numeroAleatorio: function numeroAleatorio() {
-                    return Math.random();
-                }                         
+                }                        
             }
         })
 
