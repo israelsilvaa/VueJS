@@ -33,6 +33,16 @@
                 </tr>
             </tbody>
         </table>
+        <ul>
+            <li v-for="p in publicacoes" style="border: 1px solid; padding: 10px;" :key="p.id">
+                <div >
+                    {{p.publicacao}}
+                    <hr>
+                    <input type="text">
+                </div>
+            </li>
+        </ul>
+        <button @click="misturar()" >Misturar</button>
     </div>
 
     <script>
@@ -50,9 +60,23 @@
                         titulo: 'VueJS',
                         descricao: 'curso de VueJS do basico ao avançado' 
                     }
-                }
+                },
+                publicacoes: [
+                    {id: 1, publicacao: 'publicado 1'},
+                    {id: 2, publicacao: 'publicado 2'},
+                    {id: 3, publicacao: 'publicado 3'}
+                ]
             },
             methods: {
+                misturar(){
+                    let misturado = []
+
+                    misturado[0] = this.publicacoes[2]
+                    misturado[1] = this.publicacoes[1]
+                    misturado[2] = this.publicacoes[0]
+
+                    this.publicacoes = misturado
+                }
             }
         })
 
