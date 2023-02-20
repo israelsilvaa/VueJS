@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <input type="text" @keyup="imprimir('parametro do input', 5)">
-        <button @click="alerta()">alertar</button>
+        <button @click="alerta($event)">alertar</button>
     </div>
 
     <script>
@@ -47,8 +47,8 @@
                     console.log(n)
                     console.log(this.xyz)
                 },
-                alerta(){
-                    alert('mensagem de alerta')
+                alerta(evento){
+                    console.log(evento)
                 }
             }
         })
