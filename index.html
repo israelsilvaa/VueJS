@@ -16,9 +16,23 @@
         <ul>
             <li v-for="(curso, chave) in cursos">{{chave}} - {{curso}}</li>
         </ul>
-        <ul>
-            <li v-for="(curso, chave) in cursos" v-text="chave +' => '+ curso"></li>
-        </ul>
+        <hr>
+        <table style="border: 1px solid red; width: 50%;">
+            <thead style="text-align: left;">
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: lef;">
+                <tr v-for="({titulo, descricao}, chave) in cursos2">
+                    <td>{{chave}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{descricao}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
@@ -26,10 +40,19 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['VueJS', 'teste s q 2', 'java', 'php']
+                cursos: ['VueJS', 'teste s q 2', 'java', 'php'],
+                cursos2: {
+                    1000: {
+                        titulo: 'php',
+                        descricao: 'curso de php para inciantes' 
+                    },
+                    2000: {
+                        titulo: 'VueJS',
+                        descricao: 'curso de VueJS do basico ao avançado' 
+                    }
+                }
             },
             methods: {
-
             }
         })
 
