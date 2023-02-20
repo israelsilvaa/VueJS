@@ -24,7 +24,7 @@
 
 <body>
     <div id="app">
-        <input type="text" @keyup="imprimir()">
+        <input type="text" @keyup="imprimir('parametro do input', 5)">
         <button @click="alerta()">alertar</button>
     </div>
 
@@ -38,11 +38,14 @@
                 azul: 'azul',
                 cor: 'vermelho',
                 place: 'diretiva v-bind',
-                ck: false
+                ck: false,
+                xyz: true
             },
             methods: {
-                imprimir(){
-                    console.log('teste')
+                imprimir(t, n, x){
+                    console.log(t)
+                    console.log(n)
+                    console.log(this.xyz)
                 },
                 alerta(){
                     alert('mensagem de alerta')
