@@ -24,16 +24,8 @@
 
 <body>
     <div id="app">
-
-        <a :href="site"> Site tag a </a>
-        <p class="negrito" :class="cor">Entendendo a diretiva v-bind</p>
-        <input type="text" :placeholder="place">
-        <input type="checkbox" :checked="ck">
-        <p>Tamanho da variavel $mensagem(é uma string): {{mensagem.length}}</p>
-        <p>Primeiras 5 letras de $mensagem: {{mensagem.substr(0,5)}}</p>
-        <input :value="2 + 2":class="1 == 1 ? 'azul' : cor " ><br>
-        <input :value="2 + 2":class="ck ? 'azul' : cor " >
-
+        <input type="text" @keyup="imprimir()">
+        <button @click="alerta()">alertar</button>
     </div>
 
     <script>
@@ -49,7 +41,12 @@
                 ck: false
             },
             methods: {
-
+                imprimir(){
+                    console.log('teste')
+                },
+                alerta(){
+                    alert('mensagem de alerta')
+                }
             }
         })
 
