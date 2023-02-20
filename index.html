@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,23 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .vermelho{
+        .vermelho {
             color: brown;
+        }
+        .negrito{
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div id="app">
 
-        <a v-bind:href="site"> Site tag a </a>
-        <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
-        <input type="text" value="" v-bind:placeholder="place">
-        <input type="checkbox" v-bind:checked="ck">
-    
+        <a :href="site"> Site tag a </a>
+        <p class="negrito" :class="cor">Entendendo a diretiva v-bind</p>
+        <input type="text" value="" :placeholder="place">
+        <input type="checkbox" :checked="ck">
+
     </div>
 
     <script>
@@ -39,4 +44,5 @@
 
     </script>
 </body>
+
 </html>
