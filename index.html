@@ -8,24 +8,52 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .vermelho {
-            color: brown;
-            background-color: black;
-        }
         .negrito{
             font-weight: bold;
         }
+        .vermelho {
+            color:black;
+            background-color: red;
+        }
         .azul{
-            color: aqua;
-            background-color: black;
+            color: black;
+            background-color: aqua;
+        }
+        .branco{
+            color: black;
+            background-color: white;
+        }
+        .verde{
+            color: black;
+            background-color:green;
+        }
+        .borda{
+            border: 1px solid;
+        }
+        .div-principal{
+            width: 200px;
+            height: 200px;
+        }
+        .div-comum{
+            width: 62px;
+            height: 50px;
+            display: inline-block;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" @keyup="imprimir('parametro do input', 5)">
-        <button @click="alerta($event)">alertar</button>
+     <div class="borda div-principal" :class="cor">
+        Cor: {{ cor }}<br>
+        posição X :{{px}}<br>
+        posição Y :{{py}}
+        
+     </div>
+     <hr>
+     <div @mouseover="mudarCor('verde')" @mouseout="mudarCor('branco')" class="borda div-comum "></div>
+     <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('branco')" class="borda div-comum "></div>
+     <div @click="botao('vermelho')" @mouseover="mudarCor('vermelho')" @mouseout="mudarCor('branco')" @mousemove="coordenadas($event)" class="borda div-comum" :class="corBotao"></div>
     </div>
 
     <script>
@@ -33,23 +61,24 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem: 'i5-9600KF',
-                site: 'teste.com.br',
-                azul: 'azul',
-                cor: 'vermelho',
-                place: 'diretiva v-bind',
-                ck: false,
-                xyz: true
+                cor: 'branco',
+                corBotao: 'branco',
+                px: 0,
+                py:0
             },
             methods: {
-                imprimir(t, n, x){
-                    console.log(t)
-                    console.log(n)
-                    console.log(this.xyz)
+                mudarCor(cor){
+                    this.cor = cor
                 },
-                alerta(evento){
-                    console.log(evento)
+                coordenadas(evento){
+                    this.px = evento.clientX
+                    this.py = evento.clientY
+                },
+                botao(novacor){
+                    this.corBotao = novacor
+                    this.cor = novacor
                 }
+
             }
         })
 
