@@ -13,11 +13,12 @@
 
 <body>
     <div id="app">
-        <p v-once >saldo inicial: {{saldo}}</p>
-        <p>saldo atualizado: {{saldo}}</p>
-        <input type="number" id="valor">
-        <button @click="creditar()" >creditar</button>
-        <button @click="debitar()" >debitar</button>
+        <ul>
+            <li v-for="(curso, chave) in cursos">{{chave}} - {{curso}}</li>
+        </ul>
+        <ul>
+            <li v-for="(curso, chave) in cursos" v-text="chave +' => '+ curso"></li>
+        </ul>
     </div>
 
     <script>
@@ -25,15 +26,10 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                saldo: 125.50
+                cursos: ['VueJS', 'teste s q 2', 'java', 'php']
             },
             methods: {
-                creditar(){
-                    this.saldo +=parseFloat(valor.value)
-                },
-                debitar(){
-                    this.saldo -= valor.value
-                }
+
             }
         })
 
