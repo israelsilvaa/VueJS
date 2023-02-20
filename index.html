@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,52 +7,59 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .negrito{
-            font-weight: bold;
+        .verde {
+            background-color:green
         }
+        .branco {
+            background-color:white
+        }
+
+        .azul {
+            background-color:blue
+        }
+        
         .vermelho {
-            color:black;
-            background-color: red;
+            background-color:red
         }
-        .azul{
-            color: black;
-            background-color: aqua;
+
+        .borda {
+            border:1px solid
         }
-        .branco{
-            color: black;
-            background-color: white;
+
+        .div-principal {
+            width:200px;
+            height:200px
         }
-        .verde{
-            color: black;
-            background-color:green;
-        }
-        .borda{
-            border: 1px solid;
-        }
-        .div-principal{
-            width: 200px;
-            height: 200px;
-        }
-        .div-comum{
-            width: 62px;
-            height: 50px;
+
+        .div-comum {
+            width:50px;
+            height:50px;
             display: inline-block;
         }
+        
     </style>
 </head>
-
 <body>
     <div id="app">
-     <div class="borda div-principal" :class="cor">
-        Cor: {{ cor }}<br>
-        posição X :{{px}}<br>
-        posição Y :{{py}}
-        
-     </div>
-     <hr>
-     <div @mouseover="mudarCor('verde')" @mouseout="mudarCor('branco')" class="borda div-comum "></div>
-     <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('branco')" class="borda div-comum "></div>
-     <div @click="botao('vermelho')" @mouseover="mudarCor('vermelho')" @mouseout="mudarCor('branco')" @mousemove="coordenadas($event)" class="borda div-comum" :class="corBotao"></div>
+        <a href="https://jorgesantana.net.br"
+            target="_blank"
+            @click.prevent="prevenirComportamentoPadrao()"
+        >
+        Link
+        </a>
+        <br>
+        Mensagem: {{ msg }}
+        <hr>
+        <button @click.once="executarUmaVez()">Botão</button>
+        <p>Cliques: {{ cliques }} </p>
+        <hr>
+        <form @submit.prevent.once="prevenirUmaVez()">
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Formulário: {{ formulario }}</p>
+        <hr>
+        <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
+        <p>Teclas: {{ teclas }}</p>
     </div>
 
     <script>
@@ -61,28 +67,27 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cor: 'branco',
-                corBotao: 'branco',
-                px: 0,
-                py:0
+                msg: '',
+                cliques: 0,
+                formulario: '',
+                teclas: ''
             },
             methods: {
-                mudarCor(cor){
-                    this.cor = cor
+                prevenirComportamentoPadrao() {
+                    this.msg = 'Comportamento padrão ativado'
                 },
-                coordenadas(evento){
-                    this.px = evento.clientX
-                    this.py = evento.clientY
+                executarUmaVez() {
+                    this.cliques++
                 },
-                botao(novacor){
-                    this.corBotao = novacor
-                    this.cor = novacor
+                prevenirUmaVez() {
+                    this.formulario = 'Prevenindo o comportamento padrão'
+                },
+                capturandoTeclas(event) {
+                    this.teclas = 'Modificadores encadeados com sucesso!'
                 }
-
             }
         })
 
     </script>
 </body>
-
 </html>
