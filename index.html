@@ -13,10 +13,9 @@
 
 <body>
     <div id="app">
-        <p @mouseover="textoajuda = true" @mouseout="textoajuda = false">Dica!</p>
-        <div v-show="textoajuda">
-            <h3>AJUDA SOBRE X</h3>
-            <p>Teste de ajuda para ajudar</p>
+      
+        <div v-html="elementos" >
+           
         </div>
     </div>
 
@@ -25,7 +24,7 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                textoajuda: false
+                elementos: '<p> <b>SITE</b> </p> <a href="htths://www.google.com.br">Google</a>'
 
             },
             methods: {
