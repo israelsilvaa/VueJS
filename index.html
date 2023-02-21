@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>Document</title>
-    <style>      
+    <style>
     </style>
 </head>
+
 <body>
     <div id="app">
-       <!-- <input type="text" :value="paciente" @keyup="setPaciente($event)"> -->
-       <br>v-model
-       <input type="text" v-model:value="paciente">
-       {{paciente}}
+        <!-- <input type="text" :value="paciente" @keyup="setPaciente($event)"> -->
+        <br>v-model
+        <input type="text" v-model="paciente">
+        <input type="radio" value="f" v-model="sexo">Femenino
+        <input type="radio" value="m" v-model="sexo">Masculino
+        <br>
+        {{sexo}}
+        <select name="" id="" v-model="plano">
+            <option value="" disabled>Selecione o seu plano</option>
+            <option value="1">basico 1</option>
+            <option value="2">basico 2</option>
+            <option value="3">TOP</option>
+        </select><br>
+        Plano atual do paciente: {{plano}}
+        <hr>
+        <input type="checkbox" value="cancer" v-model="doencas">cancer
+        <input type="checkbox" value="gripe" v-model="doencas">febre
+        <input type="checkbox" value="cegueira" v-model="doencas">cegueira
+        <br>
+        {{ doencas }}
+        <TEXTarea V-MODEL="diagnostico" ></TEXTarea><br>
+        {{diagnostico}}
     </div>
+    <!-- FIM DIV #APP -->
 
     <script>
 
         const vm = new Vue({
             el: '#app',
             data: {
-              paciente: 'joão da silva'
+                paciente: 'joão da silva',
+                sexo: '',
+                plano: '',
+                doencas: [],
+                diagnostico:''
             },
             methods: {
-                setPaciente(nome){
+                setPaciente(nome) {
                     this.paciente = nome.target.value
                 }
             },
             computed: {
-               
+
             }
         })
 
     </script>
 </body>
+
 </html>
