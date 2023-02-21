@@ -14,6 +14,13 @@
 <body>
     <div id="app">
         <ul>
+            <li v-for="c in comentarios"> {{c.comentario}}</li>
+        </ul>
+        <button @click="adicionarElemento()" >Adicionar elemento</button>
+        <button @click="removerElemento()" >Remover elemento</button>
+        <button @click="atualizarElemento()" >Atualizar elemento</button>
+        <hr>
+        <ul>
             <li v-for="n in numero"> {{n}}</li>
         </ul>
         <ul>
@@ -53,6 +60,12 @@
         const vm = new Vue({
             el: '#app',
             data: {
+                comentarios:[
+                    {id: 1, comentario: 'olha isso foi bom'},
+                    {id: 2, comentario: 'eu gostei'},
+                    {id: 3, comentario: 'uau que lindo'},
+                    
+            ],
                 numero: 5,
                 cursos: ['VueJS', 'teste s q 2', 'java', 'php'],
                 cursos2: {
@@ -80,6 +93,18 @@
                     misturado[2] = this.publicacoes[0]
 
                     this.publicacoes = misturado
+                },
+                adicionarElemento(){
+                    // this.comentarios[3] = {id:3, comentario:'4 comentario'}
+                    // console.log(this.comentarios)
+                    this.comentarios.push({id:3, comentario:'4 comentario'})
+                },
+                removerElemento(){
+                    this.comentarios.pop()
+                },
+                atualizarElemento(){
+                    // this.$set(<array>, <chave>, <novo_valor>)
+                    this.$set(this.comentarios,1 , {id:2, comentario: 'novo valor($set)'})        
                 }
             }
         })
