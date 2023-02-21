@@ -13,46 +13,10 @@
 
 <body>
     <div id="app">
-        <ul>
-            <li v-for="c in comentarios"> {{c.comentario}}</li>
-        </ul>
-        <button @click="adicionarElemento()" >Adicionar elemento</button>
-        <button @click="removerElemento()" >Remover elemento</button>
-        <button @click="atualizarElemento()" >Atualizar elemento</button>
-        <hr>
-        <ul>
-            <li v-for="n in numero"> {{n}}</li>
-        </ul>
-        <ul>
-            <li v-for="(curso, chave) in cursos">{{chave}} - {{curso}}</li>
-        </ul>
-        <hr>
-        <table style="border: 1px solid red; width: 50%;">
-            <thead style="text-align: left;">
-                <tr>
-                    <th>ID</th>
-                    <th>Titulo</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody style="text-align: lef;">
-                <tr v-for="({titulo, descricao}, chave) in cursos2">
-                    <td>{{chave}}</td>
-                    <td>{{titulo}}</td>
-                    <td>{{descricao}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <ul>
-            <li v-for="p in publicacoes" style="border: 1px solid; padding: 10px;" :key="p.id">
-                <div >
-                    {{p.publicacao}}
-                    <hr>
-                    <input type="text">
-                </div>
-            </li>
-        </ul>
-        <button @click="misturar()" >Misturar</button>
+        <tamplate v-if="saudacao">
+           <h1>Boas vindas</h1>
+            <p>conteudo da tag <strong>tamplate</strong></p>
+        </tamplate>
     </div>
 
     <script>
@@ -60,52 +24,11 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                comentarios:[
-                    {id: 1, comentario: 'olha isso foi bom'},
-                    {id: 2, comentario: 'eu gostei'},
-                    {id: 3, comentario: 'uau que lindo'},
-                    
-            ],
-                numero: 5,
-                cursos: ['VueJS', 'teste s q 2', 'java', 'php'],
-                cursos2: {
-                    1000: {
-                        titulo: 'php',
-                        descricao: 'curso de php para inciantes' 
-                    },
-                    2000: {
-                        titulo: 'VueJS',
-                        descricao: 'curso de VueJS do basico ao avançado' 
-                    }
-                },
-                publicacoes: [
-                    {id: 1, publicacao: 'publicado 1'},
-                    {id: 2, publicacao: 'publicado 2'},
-                    {id: 3, publicacao: 'publicado 3'}
-                ]
+            saudacao: true,
+            teste:3        
             },
             methods: {
-                misturar(){
-                    let misturado = []
-
-                    misturado[0] = this.publicacoes[2]
-                    misturado[1] = this.publicacoes[1]
-                    misturado[2] = this.publicacoes[0]
-
-                    this.publicacoes = misturado
-                },
-                adicionarElemento(){
-                    // this.comentarios[3] = {id:3, comentario:'4 comentario'}
-                    // console.log(this.comentarios)
-                    this.comentarios.push({id:3, comentario:'4 comentario'})
-                },
-                removerElemento(){
-                    this.comentarios.pop()
-                },
-                atualizarElemento(){
-                    // this.$set(<array>, <chave>, <novo_valor>)
-                    this.$set(this.comentarios,1 , {id:2, comentario: 'novo valor($set)'})        
-                }
+                
             }
         })
 
