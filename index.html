@@ -13,10 +13,26 @@
 
 <body>
     <div id="app">
-        <tamplate v-if="saudacao">
-           <h1>Boas vindas</h1>
-            <p>conteudo da tag <strong>tamplate</strong></p>
-        </tamplate>
+        <h3>adicionar pacientes</h3>
+        <span>Nome: <span><input type="text" id="inputNome"></span></span><br>
+        <span>Idade: <span><input type="text" id="inputIdade"></span></span><br>
+        <span>Plano: <span><input type="text" id="inputPlano"></span></span><br>
+        <button @click="adicionarPasciente()" >Adicionar</button>
+        <hr>
+        <h4>Ultimo Pacientes cadastrados</h4>
+        <p v-if="pacientes.length > 0" >
+            Nome: {{pacientes[pacientes.length - 1].nome}}
+            idade: {{pacientes[pacientes.length - 1].idade}}
+            Plano: {{pacientes[pacientes.length - 1].plano}}
+
+        </p>
+        <hr>
+        <h4>Pacientes cadastrados</h4>
+        <p v-for="p in pacientes">Nome: {{p.nome}}</p>        
+        <hr>
+        <h4>Pacientes plano Ouro</h4>
+        <p v-for="p in pacientes">{{p.plano == 'Ouro' ? p.nome : ''}}</p>        
+    
     </div>
 
     <script>
@@ -24,11 +40,17 @@
         const vm = new Vue({
             el: '#app',
             data: {
-            saudacao: true,
-            teste:3        
+                pacientes: []    
             },
             methods: {
-                
+                adicionarPasciente(){
+                    this.pacientes.push({
+                            nome: inputNome.value,
+                            idade: inputIdade.value,
+                            plano: inputPlano.value,
+                            
+                    })
+                }
             }
         })
 
